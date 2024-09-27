@@ -7,22 +7,11 @@ import {Provider} from 'react-redux'
 import {PersistGate} from 'redux-persist/integration/react'
 
 import {store, persistor} from './redux/store'
+import Construction from './building/construction';
 
 ReactDOM.render(
   
-  <Provider store = {store} >
-
-    <BrowserRouter>
-       
-       <PersistGate persistor = {persistor}>
-        
-        <App/>
-
-       </PersistGate>
-
-    </BrowserRouter>
-
-  </Provider>,
-
+  <Construction/>,
   document.getElementById('root')
+
 );

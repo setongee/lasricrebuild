@@ -161,6 +161,8 @@ const Dashboard = ({currentUser}) => {
         return value;
 
     }
+    
+    console.log(currentUser.uid)
 
     
     return (
@@ -276,7 +278,7 @@ const Dashboard = ({currentUser}) => {
                     </div>
 
                     {
-                        valid.length ? 
+                        !valid.length ? 
 
                         <div className="submitME">
 
@@ -287,8 +289,12 @@ const Dashboard = ({currentUser}) => {
 
                             </div>
 
-                            {
+                            {/* {
                                 !valid[0].data.status ? <div className="openForm" onClick={() => navigate(`/m&e/${currentUser.uid}`) } >  Start your M&E form </div> : <div className="openForm" onClick={() => navigate(`/m&e/${currentUser.uid}`) } >  View your M&E form </div>
+                            } */}
+
+{
+                                <div className="openForm" onClick={() => navigate(`/m&e/${currentUser.uid}`) } >  Start your M&E form </div>
                             }
 
                             
