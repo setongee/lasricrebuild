@@ -11,7 +11,10 @@ import Construction from './building/construction';
 
 ReactDOM.render(
   
-  <Construction/>,
+  <BrowserRouter>
+    <App/>
+  </BrowserRouter>
+  ,
   document.getElementById('root')
 
 );
