@@ -143,8 +143,6 @@ export const getCMSCallupDataBeneficiary = async (cms_area, cohort, track) => {
             });
         })
 
-        console.log(callupsData)
-
     } else {
 
         const docRef = await collection(db, "cms", cms_area, cohort);
@@ -158,8 +156,6 @@ export const getCMSCallupDataBeneficiary = async (cms_area, cohort, track) => {
             });
         })
 
-        console.log(callupsData)
-
     }
 
    
@@ -168,3 +164,27 @@ export const getCMSCallupDataBeneficiary = async (cms_area, cohort, track) => {
 
 }
 
+export const getPortfolio = async (cohort) => {
+
+
+    const portfolio = [];
+
+    for (var i = 1; i < Number(cohort); i++) {
+        
+        const docRef = await collection(db, "cms", "beneficiaries", `cohort${i}`);
+
+        const documenter = await getDocs(docRef)
+
+        documenter.forEach( data => {
+            portfolio.push({
+                data : data.data(),
+                uid : data.id
+            });
+        })
+
+    }
+
+
+    return portfolio;
+
+}

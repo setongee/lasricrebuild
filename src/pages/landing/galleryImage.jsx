@@ -80,8 +80,6 @@ const GalleryViews = () => {
 
             <div className="views_gallery">
 
-
-
                 {
                     data.length ? data.map( (image, index) => {
 
@@ -89,7 +87,7 @@ const GalleryViews = () => {
 
                             image.type === 'image' 
                             ? 
-                            <div className="views_holder" style={{ backgroundImage : `url(${image.src})`}}></div> 
+                            <div className="views_holder" style={{ backgroundImage : `url(${image.src})`}}> <img src={image.src} alt="" /> </div> 
                             : 
                             <div className="views_holder nibDesign">
                                 <div className="videoPlayIcon">

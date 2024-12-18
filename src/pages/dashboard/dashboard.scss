@@ -201,8 +201,6 @@
 .dashboard{
 
     height: 100%;
-    display: flex;
-    justify-content: flex-end;
 
     .desknotice{
         display: none;
@@ -390,10 +388,7 @@
 
     .main-content-dashboard{
 
-        width: calc(100% - 300px);
         position: relative;
-        margin-left: 20px;
-        padding: 0 30px;
 
         .header-dashboard{
 

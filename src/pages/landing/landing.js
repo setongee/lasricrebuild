@@ -20,320 +20,275 @@ import chart from '../../assets/svg/chart.svg'
 import webinar from '../../assets/svg/lasric-live.jpeg'
 import { getCMSData } from '../../api/firebase/admin/cms';
 
+import mark from '../../assets/svg/mark.png'
+import luther from '../../assets/comments/luther.png'
+
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { EditorState, convertToRaw, convertFromRaw } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import { Editor } from 'react-draft-wysiwyg';
 
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Marquee from '../../components/marquee/Marquee';
+import SectionHeading from '../../components/layout/SectionHeading';
+import Container from '../../components/container/container';
+import Offers from './offers/Offers';
+
+import evaluation from '../../assets/offer/evaluation.jpg'
+import venture from '../../assets/offer/venture.jpg'
+import network from '../../assets/offer/network.jpg'
+import business from '../../assets/offer/business.jpg'
+import Portfolio__summary from './summary/Portfolio__summary';
+import { ArrowUpRight } from 'iconoir-react';
+import People from './people/People';
+
 
 const Landing = () => {
-
-    let navigate = useNavigate();
-
-    const [email, setEmail] = useState("");
-
-    const [techStartUp, setTechStartUp] = useState({
-
-        image : "https://bit.ly/3n7lmfR",
-        company : "",
-        web : "",
-        content : "",
-        sector : ""
-
-    });
-
-    console.log(techStartUp.web)
-
-    const [editorState, setEditorState] = useState("");
-
-    useEffect(() => {
-
-        if (techStartUp.content === "") {
-
-            setEditorState(EditorState.createEmpty())
-
-        } else {
-
-            setEditorState(EditorState.createWithContent(convertFromRaw(techStartUp.content) ))
-        }
-
-    }, [techStartUp]);
-
-    const injectContent = () => {
-
-        const raw = convertToRaw( editorState.getCurrentContent() )
-        const may = draftToHtml(raw)
-        const result = document.getElementById('result');
-        result.innerHTML = may  
-
-    }
-
-    if (techStartUp.content !== "") {
-        injectContent()
-    }
-
-
-    //set onChange event for landing email registration
-
-    const handleChange = (e) => {
-        setEmail(e.target.value)
-    }
-
-    //setup when the email from homepage is corrected
-
-    const handleEmailOnlyRegister = async e => {
-
-        e.preventDefault();
-
-        if ( email !== "" ) {
-            
-            await localStorage.setItem('emailOnly', email);
-
-        }
-
-        await navigate('/register');
-
-    }
-
-
-    useEffect(() => {
-
-        async function fetchData() {
-
-          const response = await getCMSData("landing");
-
-          setTechStartUp(response)
-
-        }
-
-        fetchData();
-
-      }, []); // 
-
 
     return (
 
 
         <div className="landing">
 
+            {/* hero section */}
+
             <div className="homearea darkMode">
 
-                <div className="textArea">
+                <Container>
 
-                    <div className="main-text">
-                        Pioneer the 🔥 next big idea to enhance lagos.
+                    <div className="hero">
+
+                        <div className="textArea">
+
+                            <div className="main-text">
+                                Fueling dreams, unlocking potentials & funding the <span>future of Lagos</span>
+                            </div>
+
+                            <div className="sub-text">
+                                Empowering visionary entrepreneurs with the resources to transform ideas into groundbreaking businesses.
+                            </div>
+
+                        </div>
+                        
                     </div>
 
-                    <div className="sub-text">
-                        Driving a culture of Innovation, Science & Technology Research in Lagos and beyond. We invest and enable tomorrow's industries.
+                </Container>
+
+                <Marquee/>
+
+            </div>
+
+            {/* our numbersx */}
+
+            <section className='lasric__section'>
+
+                <Container>
+
+                    <SectionHeading title = "Shaping the Future of Lagos: Empowering Transformative Ideas for Lasting Impact" subtitle = "Building a resilient Lagos by empowering innovative startups with support, connections, and investment for sustainable growth." subtag = "Our Numbers" style = "light" />
+
+                    <div className="cards__group">
+
+                        <div className="card">
+                            <p>189+</p>
+                            <span> Total Number of  Funded Individuals </span>
+                        </div>
+
+                        <div className="card">
+                            <p> N250m+ </p>
+                            <span> Total amount funded so far combined </span>
+                        </div>
+
+                        <div className="card">
+                            <p> N4.76m+ </p>
+                            <span> Average amount  funded per company / idea </span>
+                        </div>
+
                     </div>
-                    
-                    <div className="lasric-form">
 
-                        <h1>Get Started Today.</h1>
+                </Container>
 
-                        <form className="getstarted" onSubmit = {handleEmailOnlyRegister} >
+            </section>
 
-                            <input type="email" placeholder='Enter your email address' onChange={handleChange} />
-                            <button type='submit'> Register </button>
+            {/* what we offer / services */}
+
+            <section className='brand__section'>
+
+                <Container>
+
+                    <SectionHeading title = "Unlocking Opportunities for Startups, Innovators and Entrepreneurs Across Lagos" subtitle = "Fueling growth, innovation, and success with tailored resources, funding, and support for Lagos-based entrepreneurs." subtag = "What we offer" style = "dark" />
+
+                   <div className="offers">
+
+                        <Offers photo = {venture} title = "Venture Capital Funding" subtitle = "Empowering Lagos State startups and entrepreneurs with strategic venture capital funding to drive innovation, create jobs, and boost economic growth." />
+                        
+                        <Offers photo = {evaluation} title = "Investment Potential Evaluation" subtitle = "Providing a source of funding for companies or startups that have a high growth and social impact potential. LASRIC will invest in a no-equity interest." />
+
+                        <Offers photo = {business} title = "Business Development and Strategy" subtitle = "Accelerating Lagos State's growth by fostering innovative business strategies, empowering entrepreneurs, and driving sustainable development through strategic initiatives." />
+                        
+                        <Offers photo = {network} title = "Network of Contacts and Connections" subtitle = "Fostering collaboration and innovation by connecting entrepreneurs, startups, and investors across Lagos State to accelerate growth and opportunities." />
+
+                   </div>
+
+                </Container>
+
+            </section>
+
+            {/* Portfolio Summary */}
+
+            <div className="portfolio__summary">
+
+                <Container>
+
+                    <Portfolio__summary/>
+
+                    <Link to = '/portfolio' className='sectionLinks'> View More Beneficiaries <div className="arrow__go"><ArrowUpRight/></div> </Link>
+
+                </Container>
+
+            </div>
+
+
+            {/* Our People */}
+
+            <div className="people">
+
+                <Container>
+                
+                    <SectionHeading title = "Work with the best specialists who have the functional experience, industry knowledge and technicals expertise your project needs" subtitle = "" subtag = "Our People" style = "light extendTitle" showNavArrows = {true} link = { {status : true, url : "/people"} } target = "arrowNavScroll" />
+
+
+                    {/* people 6 */}
+                
+                    <People/>
+
+                </Container>
+                 
+
+            </div>
+
+            {/* reviews */}
+
+            <div className="lasric__section mint">
+
+                <Container>
+                
+                    <SectionHeading title = "Founders Success Stories : What They Say About Us" subtitle = "" subtag = "What our founders are saying" style = "flow" showNavArrows = {true} target = "reviews" />
+                
+                    <div className="review__group" id = "reviews" >
+
+                        <div className="review__card">
                             
-                        </form>
+                            <div className="quotes"><img src={mark} alt="marks" /></div>
 
-                    </div>
+                            <div className="comment">LASRIC believes in growing modern startups to scale, pricepally benefits from this belief...</div>
 
-                    <div className="awardee-action" onClick={ () => navigate('/gallery') }>
+                            <div className="author">
 
-                        <div className="pulse">
+                                <div className="author__name">
+                                    <p>Luther Lawoyin</p>
+                                    <span>CEO, Pricepally</span>
+                                </div>
 
-                            <div className="blop"></div>
-                            <div className="solid"></div>
-                            <div className="playbtn"> <img src={play} alt="play button" /> </div>
+                                <div className="author__photo">
+                                    <img src={luther} alt="" />
+                                </div>
 
-                        </div>
-
-                        <div className="inform">
-
-                            <h1>Awardee Stories</h1>
-                            <p>Watch the inspiring stories of different awardees on the impact of lasric.</p>
+                            </div>
 
                         </div>
 
+                        <div className="review__card">
+                            
+                            <div className="quotes"><img src={mark} alt="marks" /></div>
 
-                    </div>
+                            <div className="comment">LASRIC believes in growing modern startups to scale, pricepally benefits from this belief...</div>
 
-                </div>
+                            <div className="author">
 
-                <div className="right-landing">
+                                <div className="author__name">
+                                    <p>Luther Lawoyin</p>
+                                    <span>CEO, Pricepally</span>
+                                </div>
 
-                    <div className="photo-awardee">
+                                <div className="author__photo">
+                                    <img src={luther} alt="" />
+                                </div>
 
-                        <img src={awardee} alt="Lasric - awardee photo" />
-                                            
-                    </div>
+                            </div>
 
-                    <div className="anim-lottie">
-                        <SethAnimation jsonSrc={"https://assets3.lottiefiles.com/packages/lf20_5rnhdawe.json"} lottieStyle = {{width: '670px', height: '670px'}} speed={"1"} />
-                    </div>
+                        </div>
 
-                    <div className="side-info">
-                        “LASRIC believes in growing modern startups to scale, pricepally benefits from this belief...”
+                        <div className="review__card">
+                            
+                            <div className="quotes"><img src={mark} alt="marks" /></div>
 
-                        <div className="awardee-author">
-                        Luther Lawoyin, {<br></br>} CEO <strong>Pricepally</strong>
+                            <div className="comment">LASRIC believes in growing modern startups to scale, pricepally benefits from this belief...</div>
+
+                            <div className="author">
+
+                                <div className="author__name">
+                                    <p>Luther Lawoyin</p>
+                                    <span>CEO, Pricepally</span>
+                                </div>
+
+                                <div className="author__photo">
+                                    <img src={luther} alt="" />
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div className="review__card">
+                            
+                            <div className="quotes"><img src={mark} alt="marks" /></div>
+
+                            <div className="comment">LASRIC believes in growing modern startups to scale, pricepally benefits from this belief...</div>
+
+                            <div className="author">
+
+                                <div className="author__name">
+                                    <p>Luther Lawoyin</p>
+                                    <span>CEO, Pricepally</span>
+                                </div>
+
+                                <div className="author__photo">
+                                    <img src={luther} alt="" />
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div className="review__card">
+                            
+                            <div className="quotes"><img src={mark} alt="marks" /></div>
+
+                            <div className="comment">LASRIC believes in growing modern startups to scale, pricepally benefits from this belief...</div>
+
+                            <div className="author">
+
+                                <div className="author__name">
+                                    <p>Luther Lawoyin</p>
+                                    <span>CEO, Pricepally</span>
+                                </div>
+
+                                <div className="author__photo">
+                                    <img src={luther} alt="" />
+                                </div>
+
+                            </div>
+
                         </div>
 
                     </div>
 
-                </div>
+                </Container>
+
 
             </div>
-
-            <div className="partners">
-
-                <p>Our Trusted Partners</p>
-
-                <div className="logos">
-
-                    <div className="log"> <img src={partner1} alt="logo partner" /> </div>
-                    <div className="log"> <img src={partner2} alt="logo partner" /> </div>
-                    <div className="log"> <img src={partner3} alt="logo partner" /> </div>
-                    <div className="log"> <img src={partner5} alt="logo partner" /> </div>
-
-                </div>
-
-            </div>
-
-            {/* <div className="videoplayer">
-
-                <div className="text">
-
-                    <div className="start">Live Webinar</div>
-                    <div className="lasric_solution">Startup Funding : The LASRIC Solution</div>
-
-                    <div className="linktoweb">To apply click <a href="#" target="_blank"> here </a></div>
-
-                </div>
-
-                <div className="player">
-                    <img src={webinar} alt="" />
-                </div>
-
-            </div> */}
-
-            <div className="build">
-
-                <div className="tip">
-
-                    <h1>Design & Build your ideas, become the value creator Lagos needs.</h1>
-                    <p>Be the next inspired technology/research team in 2022 with innovative ideas & Future-ready solutions that can change Lagos and Africa by extension. </p>
-
-                </div>
-
-                <div className="anim-lottie">
-
-                    <SethAnimation jsonSrc={"https://assets5.lottiefiles.com/private_files/lf30_gcroxmlt.json"} lottieStyle = {{width: '600px', height: '600px'}} speed={"1"} />
-
-                </div>
-
-            </div>
-
-            <div className="featuredTech">
-
-                <div className="title">Featured Tech {<br></br>} Startup of the month</div>
-                
-                <div className="photo"> <img src={techStartUp.image} alt="lasric featured tech startup" /> </div>
-
-                <div className="info-actions">
-
-                    <div className="info">
-                        <div className="heading"> <div className="icon-A"> <img src={suitcase} alt="icon packs" /> </div> Company</div>
-                        <div className="comapany_name">{techStartUp.company}</div>
-                    </div>
-
-                    <div className="line-space"></div>
-
-                    <div className="info">
-                        <div className="heading"> <div className="icon-A"> <img src={flame} alt="icon packs" /> </div> Sector</div>
-                        <div className="comapany_name">{techStartUp.sector}</div>
-                    </div>
-
-                    <div className="line-space"></div>
-
-                    <div className="info">
-                        <div className="heading"> <div className="icon-A"> <img src={web} alt="icon packs" /> </div> Website</div>
-                        <div className="comapany_name"> <a href={techStartUp.web} target="_blank" >{techStartUp.web}</a> </div>
-                    </div>
-                    
-
-                </div>
-
-                <div className="body-text" id='result'></div>
-
-            </div>
-
-            <div className="applyA">
-                <h1>Apply today in a few simple steps</h1>
-                <a href='/apply' className="applybtn" style={{color: 'white'}} >Apply Now</a>
-            </div>
-
-            <div className="themes">
-
-                <h1> The Lagos State Cardinal {<br></br>} Focus Point. </h1>
-                
-                <div className="cardArea">
-
-                    <div className="theme-card t">
-
-                        <div className="abbrv"> T </div>
-                        <div className="iconify"> <img src={taxi} alt="themes_icon" /> <div className="plop"></div> </div>
-                        <div className="textin">Traffic Management {<br></br>} and Transportation</div>
-
-                    </div>
-
-                    <div className="theme-card t">
-
-                        <div className="abbrv"> H </div>
-                        <div className="iconify"> <img src={doctor} alt="themes_icon" /> <div className="plop"></div> </div>
-                        <div className="textin">Health and {<br></br>} Environment</div>
-
-                    </div>
-
-                    <div className="theme-card t">
-
-                        <div className="abbrv"> E </div>
-                        <div className="iconify"> <img src={gradCap} alt="themes_icon" /> <div className="plop"></div> </div>
-                        <div className="textin">Education and {<br></br>} Technology </div>
-
-                    </div>
-
-                    <div className="theme-card t">
-
-                        <div className="abbrv"> M </div>
-                        <div className="iconify"> <img src={chart} alt="themes_icon" /> <div className="plop"></div> </div>
-                        <div className="textin"> Making Lagos a {<br></br>} 21st Century Economy </div>
-
-                    </div>
-
-                    <div className="theme-card t">
-
-                        <div className="abbrv"> E </div>
-                        <div className="iconify"> <img src={music} alt="themes_icon" /> <div className="plop"></div> </div>
-                        <div className="textin"> Entertainment {<br></br>} and Tourism </div>
-
-                    </div>
-
-                    <div className="theme-card t">
-
-                        <div className="abbrv"> S </div>
-                        <div className="iconify"> <img src={secure} alt="themes_icon" /> <div className="plop"></div> </div>
-                        <div className="textin"> Security and {<br></br>} Governance </div>
-
-                    </div>
-
-                </div>
-
-            </div>
+            
+            
 
         </div>
 

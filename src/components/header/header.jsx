@@ -5,11 +5,14 @@ import { Link, useLocation } from "react-router-dom";
 import './header.scss'
 
 //lasric logo
-import LasricLogo from '../../assets/svg/lasric_logo.svg'
+import LasricLogo from '../../assets/svg/logo__lasric.svg'
+import { ArrowUpRight, MenuScale, NavArrowDown } from 'iconoir-react';
+import Container from '../container/container';
+import { getCurrentCohortNumber } from '../../api/firebase/admin/admin_applications';
 
 
 
-const Header = ({user}) => {
+const Header = ({user, cohort}) => {
 
     const  routes = {
         
@@ -19,6 +22,11 @@ const Header = ({user}) => {
         people : '/people',
         beneficiaries : '/beneficiaries',
         gallery : '/gallery',
+        portfolio : '/portfolio',
+        blog : '/blog',
+        help : '/support/help',
+        resources : '/support/resources',
+        contact : '/contact',
 
         //auth
         registers : '/register',
@@ -37,6 +45,7 @@ const Header = ({user}) => {
     }
 
     const [isBurgerOpen, setIsBurgerOpen] = useState(false)
+    const [showDrop, setShowDrop] = useState(false);
 
     const {pathname} = useLocation();
 
@@ -44,107 +53,180 @@ const Header = ({user}) => {
         setIsBurgerOpen(false)
     }, [pathname]);
 
-    return (
+    useEffect(() => {
+        
+        if ( isBurgerOpen ) {
+            document.body.style.overflow = "hidden"
+        } else{
+            document.body.style.overflow = "visible"
+        }
+       
+    }, [isBurgerOpen]);
+
+
+return (
 
     <div className = {`reg client_${pathname.split('/')[1]}`} >
 
-    {/* // Mobile support */}
+        {/* // Mobile support */}
     
-    <div className="header desktop">
+        <div className="header desktop">
 
-        <div className="logo"> 
-        
-            <img src={LasricLogo} alt="lasric logo" />
-        
-        </div>
+            <Container>
 
-        <div className="menulist">
+                <div className="header__items">
 
-            <Link to={routes.home}>Home</Link>
-            <Link to={routes.about}>About</Link>
-            <Link to={routes.people}>Council</Link>
-            <Link to={routes.gallery}>Gallery</Link>
-            <Link to={routes.beneficiaries}> Beneficiaries </Link>
+                    <div className="logo"> 
+                
+                        <img src={LasricLogo} alt="lasric logo" />
+                    
+                    </div>
 
-        </div>
-
-        <div className="auth-area">
-
-            {
-                user.uid && user.uid !== undefined ? <div className="account">
-                    <Link to={`${user.type === 'user' ? '/dashboard' : user.type === 'council' ? '/council' : '/admin/overview'}`}>Dashboard</Link>
-                    <i className="fi fi-rr-angle-small-down"></i>
-                </div> : <div className="account">
-                <Link to="/login">Login</Link>
-                <i className="fi fi-rr-angle-small-down"></i>
-            </div>
-            }
-
-            <div className="line-div"></div>
-
-            <Link to="/apply" className="act-btn" >Apply </Link>
-
-        </div>
-
-    </div>
-
-        <div className="header mobile">
-
-            <div className="logo"> 
-            
-                <img src={LasricLogo} alt="lasric logo" />
-            
-            </div>
-
-            <div className="menuicon" onClick={() => setIsBurgerOpen(true)}>
-                <i className="fi fi-rr-menu-burger"></i>
-            </div>
-
-            {
-                isBurgerOpen ? (
-
-                    <div className="menu">
-
-                        <div className="menuicon" onClick={() => setIsBurgerOpen(false)}>
-                            <i className="fi fi-rr-menu-burger"></i>
-                        </div>
-
-                        <div className="menulist">
+                    <div className="menulist">
 
                         <Link to={routes.home}>Home</Link>
-                        <Link to={routes.about}>About</Link>
-                        <Link to={routes.people}>Council</Link>
-                        <Link to={routes.gallery}>Gallery</Link>
-                        <Link to={routes.beneficiaries}> Beneficiaries </Link>
-
-                        </div>
-
-                        <div className="auth-area">
-
-                            {
-                                user.uid && user.uid !== undefined ? <div className="account">
-                                    <Link to = {`${user.type === 'user' ? '/dashboard' : '/council'}`} >Dashboard</Link>
-                                    <i className="fi fi-rr-angle-small-down"></i>
-                                </div> : <div className="account">
-                                <Link to="/login">Login</Link>
-                                <i className="fi fi-rr-angle-small-down"></i>
+                        <Link to={routes.about}> About </Link>
+                        <Link to={routes.portfolio}>Portfolio</Link>
+                        <Link to={routes.people}>Our People</Link>
+                        <Link to={routes.blog}>Blog</Link>
+                        <a className='drivecut'> 
+                            Support <div className="dropdown--arrow"><NavArrowDown/></div>  
+                            
+                            <div className="dropingMenu">
+                                <Link to = {routes.help}> How to Apply </Link>
+                                <Link to = {routes.resources}> Resources </Link>
                             </div>
-                            }
-
-                            <div className="line-div"></div>
-
-                            <Link to="/apply" className="act-btn" >Apply </Link>
-
-                        </div>
+                        </a>
+                        <Link to={routes.contact}> Contact </Link>
 
                     </div>
 
-                ) : null
-            }
+                    <div className="auth-area">
+
+                        <Link to="/apply" className="act-btn" >Apply for <strong> C{cohort}. </strong> </Link>
+
+                        <div className="line-div"></div>
+
+                        {
+                            user.uid && user.uid !== undefined ? <div className="account">
+
+                                <Link to={`${user.type === 'user' ? '/dashboard' : user.type === 'council' ? '/council' : '/admin/overview'}`}> Dashboard </Link>
+
+                            </div> : 
+                            <div className="account">
+
+                                <Link to="/login"> Sign In </Link>
+
+                            </div>
+
+                        }
+
+                    </div>
+                    
+                </div>
+
+            </Container>
 
         </div>
-        
-    </div>
+
+            <div className="header mobile">
+
+                <Container>
+
+                    <div className="headerSection">
+
+                        <div className="logo"> 
+                        
+                            <img src={LasricLogo} alt="lasric logo" />
+                        
+                        </div>
+
+                        <div className="menuicon" onClick={() => setIsBurgerOpen(!isBurgerOpen)}>
+
+                            <MenuScale strokeWidth={2} />
+                            
+                        </div>
+
+                        {
+                            isBurgerOpen ? (
+
+                                <div className="menu">
+
+                                    <Container>
+
+                                        <div className="menulist">
+
+                                            <Link to={routes.home}>Home</Link>
+                                            <Link to={routes.about}>About</Link>
+                                            <Link to={routes.portfolio}>Portfolio</Link>
+                                            <Link to={routes.people}>Our People</Link>
+                                            <Link to={routes.blog}> Blog </Link>
+                                            <a> 
+                                                
+                                                <div className="batch1" onClick={() => setShowDrop(!showDrop)}>
+                                                    Support 
+                                                    <div className="icon"> <NavArrowDown strokeWidth={2}/> </div>
+                                                </div>
+
+                                                {
+                                                    showDrop 
+                                                    
+                                                    ? 
+
+                                                    <div className="batch2">
+
+                                                        <Link to = {routes.help} > How to Apply </Link>
+
+                                                        <Link to = {routes.resources} > Resources </Link>
+
+                                                    </div> 
+                                                    
+                                                    : 
+                                                    
+                                                    null
+                                                }
+
+                                            </a>
+                                            <Link to={routes.contact}> Contact </Link>
+
+                                        </div>
+
+                                        <div className="auth-area">
+
+                                            <Link to="/apply" className="act-btn" >Apply for <strong> C{cohort}. </strong> </Link>
+
+                                            <div className="line-div"></div>
+
+                                            {
+                                                user.uid && user.uid !== undefined ? <div className="account">
+
+                                                    <Link to={`${user.type === 'user' ? '/dashboard' : user.type === 'council' ? '/council' : '/admin/overview'}`}> Dashboard </Link>
+
+                                                </div> : 
+                                                <div className="account">
+
+                                                    <Link to="/login"> Sign In </Link>
+
+                                                </div>
+
+                                            }
+
+                                        </div>
+
+                                    </Container>
+
+                                </div>
+
+                            ) : null
+                        }
+
+                    </div>
+
+                </Container>
+
+            </div>
+            
+        </div>
 
     );
 }

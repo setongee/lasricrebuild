@@ -94,16 +94,16 @@ const ApplicationsDash = ({currentUser}) => {
         <div className="dashboard">
 
 
-            {/* <div className="desknotice">
+            <div className="desknotice">
 
             Hey, kindly use a desktop device or screen to access this page
 
             <div className="goHome"> <Link to="/">Back to Main Site</Link> </div>
 
-            </div> */}
+            </div>
 
 
-            
+            {/* <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium aliquid, sit ratione minima voluptatibus quos blanditiis nisi architecto perspiciatis iste!</h1> */}
             
 
             <div className="menuAreaBar">
@@ -168,13 +168,12 @@ const ApplicationsDash = ({currentUser}) => {
 
                     </div>
 
-                    
-
-                    {/* <div className="applicationsData">
+                    <div className="applicationsData">
 
                             <div className="apps">
 
                                 {
+                                    
                                     submitted.length ? currentUser.applications.cohort4.map(data => (
 
 
@@ -204,97 +203,15 @@ const ApplicationsDash = ({currentUser}) => {
                                     )) : <div className="empty">
                                         <SethAnimation jsonSrc={"https://assets10.lottiefiles.com/packages/lf20_EMTsq1.json"} lottieStyle = {{width: '500px', height: '500px'}} speed={"1"} />
                                     </div>
+
                                 }
 
                         </div>
 
-                    </div> */}
-
-
-
-                    {/* <div className="timeline">
-
-                        <div className="timeline-days">You Have {remainingDays} Days Till Deadline</div>
-
-                        <div className="line-time"></div>
-
-                        <div className="timex">
-
-                            <div className="time t1">
-
-                                <div className="time-content date-content"> February 1, 2022 </div>
-
-                                <div className="ball-line">
-
-                                    <div className="cir"><i className="fi fi-rr-check"></i></div>
-                                    <div className="line-cir"></div>
-
-                                </div>
-
-                                <div className="time-content"> Cohort 4 Call for Applications </div>
-
-                            </div>
-
-                            <div className="time t1">
-
-                                <div className="time-content date-content"> March 9, 2022 </div>
-
-                                <div className="ball-line">
-
-                                    <div className="cir"></div>
-                                    <div className="line-cir"></div>
-                                    
-                                </div>
-
-                                <div className="time-content"> LASRIC Webinar, Startup Funding </div>
-
-                            </div>
-
-                            <div className="time t1">
-
-                                <div className="time-content date-content"> March 20, 2022 </div>
-
-                                <div className="ball-line">
-
-                                    <div className="cir"></div>
-                                    <div className="line-cir"></div>
-                                    
-                                </div>
-
-                                <div className="time-content"> Submitted Applications Grading Begins </div>
-
-                            </div>
-
-                            <div className="time t1">
-
-                                <div className="time-content date-content"> March 31, 2022 </div>
-
-                                <div className="ball-line">
-
-                                    <div className="cir"></div>
-                                    <div className="line-cir"></div>
-                                    
-                                </div>
-
-                                <div className="time-content"> Cohort 4 - Innovation & Stem Applications Closed </div>
-
-                            </div>
-
-                        </div>
-
-                    </div> */}
-
-
-                    {/* Messages Part */}
-
-                    
-
+                    </div>
 
                 </div>
 
-
-               
-               
             </div>   
                 
         </div>

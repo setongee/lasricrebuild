@@ -2,7 +2,7 @@ import React,{useState, useEffect} from 'react';
 import {Routes, Route, useNavigate} from 'react-router-dom'
 
 import Landing from '../pages/landing/landing';
-import About from '../pages/landing/about';
+import About from '../pages/about/about';
 import Register from '../pages/auth/register';
 import Login from '../pages/auth/login';
 import Callup from '../pages/landing/callup';
@@ -82,8 +82,14 @@ import GradeResearch from '../council/dashboard/gradeResearch';
 import Awardees from '../Admin/awardees';
 import MEForm from '../pages/dashboard/M&EForm';
 import MEFormView from '../pages/dashboard/M&EFormView';
+import Blog from '../pages/blog/Blog';
+import BlogView from '../pages/blog/BlogView';
+import Support from '../pages/support/Support';
+import Resources from '../pages/resources/resources';
+import Contact from '../pages/contact/Contact';
+import Portfolio from '../pages/portfolio/Portfolio';
 
-const Router = ({user}) => {
+const Router = ({user, cohort}) => {
 
     const Navigate = useNavigate();
     const [currentUser, setCurrentUser] = useState({});
@@ -91,8 +97,7 @@ const Router = ({user}) => {
 
     useEffect( () => {
         
-        setCurrentUser(user)
-        
+        setCurrentUser(user) 
 
     }, [user] );
 
@@ -124,8 +129,11 @@ const Router = ({user}) => {
                 <Route index element = {<Landing/>} />
                 <Route path = 'about' element = {<About/>} />
                 <Route path = 'register' element = {<Register/>} />
-                <Route path = 'login' element = {<Login/>} />
+                <Route path = 'login' element = { <Login/> } />
                 <Route path = 'apply' element = {<Callup/>} />
+
+                <Route path = 'blog' element = {<Blog/>} />
+                <Route path = 'blog/:id' element = {<BlogView/>} />
 
                 <Route path = 'dashboard' element = { Object.keys(currentUser).length && currentUser.type === 'user' ? <Dashboard currentUser = {user} /> : <Login/>  }/>
                     
@@ -135,9 +143,16 @@ const Router = ({user}) => {
 
                 {/* <Route path = '/m&e/:uid' element = {<MEForm />} /> */}
 
+                <Route path = 'portfolio' element = {<Portfolio cohort = {cohort} />} />
                 <Route path = 'people' element = {<Council/>} />
+                <Route path = 'support/help' element = {<Support/>} />
+                <Route path = 'support/resources' element = {<Resources/>} />
+                <Route path = 'contact' element = {<Contact/>} />
+
                 <Route path = 'beneficiaries' element = { <Beneficiaries/> } />
+                
                 {/* <Route path = 'gallery' element = {<Galleryimage />} /> */}
+                
                 <Route path = 'gallery' element = {<Gallery />} />
                 <Route path = 'council' element = {<Redirect navigator = '/council/dashboard/applications/all'/>} />
                 <Route path = 'admin' element = {<Redirect navigator = '/admin/overview' />} />

@@ -9,6 +9,7 @@ import "./styles.scss"
 import EmptyData from '../../assets/svg/empty_data.png'
 import ApplyCard from './apply';
 import { email_notice_subscription } from '../../api/firebase/email_notice';
+import Container from '../../components/container/container';
 
 const ApplyApplication = () => {
 
@@ -76,7 +77,7 @@ const ApplyApplication = () => {
 
                 setTimeout(() => {
 
-                    docv.style.backgroundColor = "#4351f1";
+                    docv.style.backgroundColor = "#00B44E";
                     docv.textContent = "Notify Me"
                     setNoticeEmail("")
                     
@@ -92,7 +93,7 @@ const ApplyApplication = () => {
 
     return (
 
-        <div className="callupListing">
+        <div className="callupListing pageBrief">
 
             {
                 loadPage ? 
@@ -104,46 +105,51 @@ const ApplyApplication = () => {
                 </div> : null
             }
 
-            <div className="callupItem landing_apply_page">
+            <Container>
 
-                <div className="title_callup_landing"> Callups </div>
+                <div className="callupItem landing_apply_page">
 
-                <div className="result_data">
+                    <div className="headers">
+                        <p>Callups : Apply for Cohort 6</p>
+                    </div>
 
-                    {
-                        data.length ? data.map((data, index) => {
+                    <div className="result_data">
 
-                            return <ApplyCard dataPlan = {data} key = {index} onDelete = {setDeleteListener} deleteVal = {deleteListener} />
-                            
-                        }) : <div className="no-data-state noDataState_landing">
+                        {
+                            data.length ? data.map((data, index) => {
 
-                                <div className="none_anim">
-
-                                    <img src={EmptyData} alt="empty data state" />
-
-                                </div>
-                
-                            <div className="info_msg">
+                                return <ApplyCard dataPlan = {data} key = {index} onDelete = {setDeleteListener} deleteVal = {deleteListener} />
                                 
-                                    No active applications currently
-                                    {<br></br>}
-                                    {<br></br>}
-                                    Kindly fill in your email address below to be notified once there are active applications.
+                            }) : <div className="no-data-state noDataState_landing">
 
-                            
-                            </div>
+                                    <div className="none_anim">
 
-                            <div className="notifyMe">
-                                    <input type="email" placeholder='Enter email address to be notified' value={ noticeEmail } onChange = { (e) => setNoticeEmail(e.target.value) } required/>
-                                    <div className="submitNotice" onClick={handleSubmitNotice} id = "email_btn" >Notify Me</div>
-                            </div>
-        
-                            </div>
-                    }
+                                        <img src={EmptyData} alt="empty data state" />
+
+                                    </div>
+                    
+                                <div className="info_msg">
+                                    
+                                        <p>No active applications currently</p>
+                                        
+                                        <span>Kindly fill in your email address below to be notified once there are active applications.</span>
+
+                                
+                                </div>
+
+                                <div className="notifyMe">
+                                        <input type="email" placeholder='Enter email address to be notified' value={ noticeEmail } onChange = { (e) => setNoticeEmail(e.target.value) } required/>
+                                        <div className="submitNotice" onClick={handleSubmitNotice} id = "email_btn" >Notify Me</div>
+                                </div>
+            
+                                </div>
+                        }
+
+                    </div>
 
                 </div>
 
-            </div>
+            </Container>
 
         </div>
 

@@ -14,7 +14,7 @@ export const setDocument = async ( uid, lastname, firstname, email, phone, type,
         email : email,
         phone : phone,
         applications : {
-            cohort4 : []
+            cohort6 : []
         },
         uid : uid,
         type : type,
@@ -25,7 +25,7 @@ export const setDocument = async ( uid, lastname, firstname, email, phone, type,
     setAdminDocument(uid, lastname, firstname, email, type)
    }
 
-   sendLasricEmail(email, firstname, lastname, password, track)
+//    sendLasricEmail(email, firstname, lastname, password, track)
 
 }
 

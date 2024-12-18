@@ -63,8 +63,6 @@ const StemTitle = ({currentUser}) => {
     const [submitted, setSubmitted] = useState(false);
     const [textSubmit, setText] = useState(false)
 
-    console.log(textSubmit);
-
     const appid = `LASRIC_${callupid}_${currentUser.uid}`
 
     const [status, setStatus] = useState(dummy)
@@ -79,7 +77,10 @@ const StemTitle = ({currentUser}) => {
 
         const unsub = onSnapshot(doc(db, "applications_data", cohort, "applications", appid), (doc) => {
 
-            blend(doc.data())
+            if (doc.exists()){
+
+                blend(doc.data())
+            }
      
          });
 
@@ -87,6 +88,7 @@ const StemTitle = ({currentUser}) => {
          
 
     }, []);
+
     useEffect(() => {
 
          if ( status.personal.status === 'completed' && status.problem.status === 'completed' && status.scalability.status === 'completed' && status.experience.status === 'completed'  && status.relevance.status === 'completed' && status.impact.status === 'completed' ) {

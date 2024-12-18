@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import { getCouncilData } from '../api/firebase/auth';
 import './council.scss'
+import People from '../components/people/People';
+import Container from '../components/container/container';
 
 const Council = () => {
 
@@ -11,7 +13,6 @@ const Council = () => {
         async function fetchData() {
 
             const response = await getCouncilData();
-            //console.log(response);
             setData(response);
 
         }
@@ -24,38 +25,14 @@ const Council = () => {
 
         <div className="councilFrame">
 
-            <div className="headerTags">
-                <h1>Our People</h1>
-                <p>The Council is made up of seasoned Tech Entrepreneurs, Academia and senior government officials in Lagos State.</p>
-            </div>
+            <Container>
 
-            <div className="images">
+                <People size = {80} />
 
-                {
-                    data.length ? data.map(img => {
-                        
-                        return <div className="councilImageHolder">
-
-                        <div className="imageContainer"  >
-                            <img src={img.img} alt={`council member - ${img.firstname}_${img.lastname}`} />
-                        </div>
-    
-                        <div className="councilMemberName">
-                            {img.firstname} {img.lastname}
-                        </div>
-    
-                        <div className="councilJob">
-                            {img.job || "No Job Added Yet"}
-                        </div>
-    
-                    </div>
-
-                    }) : null
-                }
-
-            </div>
+            </Container>
 
         </div>
+        
     );
 }
 
