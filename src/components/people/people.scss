@@ -101,3 +101,27 @@
     }
 
 }
+
+@media(max-width : 768px){
+
+    .peopleSection{
+        .peopleSectionHeader{
+            margin-bottom: 50px;
+            font-size: 30px;
+        }
+    }
+
+}
+
+@media(max-width : 500px){
+
+    .peopleSection{
+        .peopleSectionHeader{
+            margin-bottom: 50px;
+            font-size: 26px;
+            line-height: 34px;
+            margin-top: 30px;
+        }
+    }
+
+}
