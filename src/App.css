@@ -163,6 +163,21 @@ body{
 
 }
 
+.nope{
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 0 40px;
+  text-align: center;
+  line-height: 22px;
+}
+
 .faqsSection{
   
   position: relative;
@@ -569,3 +584,14 @@ body{
   }
 
 }
+
+/* * {
+
+  input{
+
+    &::placeholder{
+      font-size: normal !important;
+    }
+  }
+
+} */

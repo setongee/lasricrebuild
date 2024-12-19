@@ -76,3 +76,47 @@
 .contact{
     border: none;
 }
+
+
+@media(max-width : 850px){
+
+    .lasric__form{
+
+        form{
+            width: 100%;
+        }
+
+    }
+
+}
+
+@media(max-width : 500px){
+
+    .lasric__form{
+
+        margin-top: 40px;
+
+        form{
+
+            width: 100%;
+            gap: 15px;
+
+            .diff{
+
+                flex-direction: column;
+                justify-content: space-between;
+                gap: 15px;
+    
+                .inputZone{
+    
+                    width: 100%;
+                      
+                }
+    
+            }
+
+        }
+
+    }
+
+}

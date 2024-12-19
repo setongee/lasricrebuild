@@ -175,19 +175,19 @@ const Register = () => {
                         <div className="half-type">
 
                             <div className="inputArea">
-                                <label htmlFor="">Lastname</label>
-                                <input name = 'lastname' onChange = {handleChange} value = {data.lastname} type="text" placeholder = 'Enter Lastname' required autoFocus/>
+                                <label htmlFor="">Firstname</label>
+                                <input type="text" placeholder = 'Enter Firstname' required name = 'firstname' onChange = {handleChange} value = {data.firstname}/>
                             </div>
-
+                            
                         </div>
 
                         <div className="half-type">
 
                             <div className="inputArea">
-                                <label htmlFor="">Firstname</label>
-                                <input type="text" placeholder = 'Enter Firstname' required name = 'firstname' onChange = {handleChange} value = {data.firstname}/>
+                                <label htmlFor="">Lastname</label>
+                                <input name = 'lastname' onChange = {handleChange} value = {data.lastname} type="text" placeholder = 'Enter Lastname' required autoFocus/>
                             </div>
-                            
+
                         </div>
 
                     </div>

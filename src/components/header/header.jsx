@@ -59,6 +59,7 @@ const Header = ({user, cohort}) => {
             document.body.style.overflow = "hidden"
         } else{
             document.body.style.overflow = "visible"
+            setShowDrop(false)
         }
        
     }, [isBurgerOpen]);

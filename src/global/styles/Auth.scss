@@ -310,54 +310,137 @@
 }
 
 
-@media (max-width : 1024px){
+@media (max-width : 1200px){
 
-    .Register {
-        form{
-            width: 60%;
+    .authComponent{
+
+        .platform{
+            width: 40%;
         }
+
     }
 
 }
 
-@media (max-width : 768px){
+@media (max-width : 1000px){
 
+    .authComponent{
 
-    .Register {
+        .platform{
+            width: 45%;
 
-        .title-tag{
-
-            width: 80%;
-        }
-
-        form{
-            width: 80%;
-        }
-    }
-
-}
-
-@media (max-width : 425px){
-
-    .Register {
-
-        padding: 130px 0;
-
-        .title-tag{
-
-            width: 90%;
-            flex-direction: column;
-
-            h1{
-                margin-left: 0px;
-                margin-top: 30px;
-                text-align: center;
+            p{
+                width: 80%;
             }
         }
 
-        form{
-            width: 90%;
-        }
     }
 
 }
+
+@media (max-width : 950px){
+
+    .authComponent{
+
+        .platform{
+            width: 50%;
+            display: none;
+
+            p{
+                width: 80%;
+            }
+        }
+
+        .Register{
+
+            padding: 40px;
+            width: 600px;
+            margin: 0 auto;
+
+            .authTitle{
+                .di{
+                    width: 100%;
+                }
+            }
+
+            form{
+                width: 100%;
+            }
+
+        }
+
+    }
+
+}
+
+@media (max-width : 600px){
+
+    .authComponent{
+
+        .Register{
+
+            padding: 40px 20px;
+            width: 100%;
+            margin: 0 auto;
+
+            .authTitle{
+                .di{
+                    width: 100%;
+                }
+            }
+
+            form{
+                width: 100%;
+
+                input::placeholder{
+                    font-size: normal !important;
+                }
+            }
+
+        }
+
+    }
+
+}
+
+// @media (max-width : 768px){
+
+
+//     .Register {
+
+//         .title-tag{
+
+//             width: 80%;
+//         }
+
+//         form{
+//             width: 80%;
+//         }
+//     }
+
+// }
+
+// @media (max-width : 425px){
+
+//     .Register {
+
+//         padding: 130px 0;
+
+//         .title-tag{
+
+//             width: 90%;
+//             flex-direction: column;
+
+//             h1{
+//                 margin-left: 0px;
+//                 margin-top: 30px;
+//                 text-align: center;
+//             }
+//         }
+
+//         form{
+//             width: 90%;
+//         }
+//     }
+
+// }

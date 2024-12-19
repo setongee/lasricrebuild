@@ -109,9 +109,11 @@ const ApplyApplication = () => {
 
                 <div className="callupItem landing_apply_page">
 
-                    <div className="headers">
+                    {
+                        data.length ? <div className="headers">
                         <p>Callups : Apply for Cohort 6</p>
-                    </div>
+                    </div> : <p className='nope'>No active applications currently</p>
+                    }
 
                     <div className="result_data">
 
@@ -122,7 +124,7 @@ const ApplyApplication = () => {
                                 
                             }) : <div className="no-data-state noDataState_landing">
 
-                                    <div className="none_anim">
+                                    {/* <div className="none_anim">
 
                                         <img src={EmptyData} alt="empty data state" />
 
@@ -140,7 +142,7 @@ const ApplyApplication = () => {
                                 <div className="notifyMe">
                                         <input type="email" placeholder='Enter email address to be notified' value={ noticeEmail } onChange = { (e) => setNoticeEmail(e.target.value) } required/>
                                         <div className="submitNotice" onClick={handleSubmitNotice} id = "email_btn" >Notify Me</div>
-                                </div>
+                                </div> */}
             
                                 </div>
                         }
