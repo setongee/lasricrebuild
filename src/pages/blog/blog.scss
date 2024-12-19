@@ -1,7 +1,5 @@
 .blog{
 
-    
-    
     .blogBody{
 
         margin-top: 120px;
@@ -100,3 +98,65 @@
     }
 
 }
+
+@media(max-width : 950px){
+
+    .blog{
+
+        .blogBody{
+
+            margin-top: 100px;
+
+            .blog__item{
+
+                width: 100%;
+
+            }
+
+        }
+
+    }
+ 
+ }
+
+ @media(max-width : 500px){
+
+    .blog{
+
+        .blogBody{
+
+            margin-top: 50px;
+
+            .blog__item{
+
+                width: 100%;
+                gap: 20px;
+                flex-direction: column-reverse;
+                align-items: flex-start;
+
+                .text__content{
+                    width: 100%;
+
+                    .blog__title{
+                        width: 100%;
+                        font-size: 18px;
+                        line-height: 26px;
+                    }
+
+                    .blog__subtitle{
+                        width: 100%;
+                    }
+                }
+
+                .blog__photo{
+                    width: 100%;
+                    background-color: #eee;
+                }
+
+            }
+
+        }
+
+    }
+ 
+ }
