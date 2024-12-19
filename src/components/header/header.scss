@@ -199,12 +199,13 @@ body{
         
             position: fixed;
             width: 100%;
-            height: calc(100vh - 110px);
-            top: 115px;
+            height: calc(100vh - 95px);
+            top: 95px;
             left: 0;
             display: flex;
             flex-direction: column; 
             padding: 50px 0;
+            padding-top: 40px;
             overflow: hidden;
             overflow-y: auto;
             background-color: #fff;
