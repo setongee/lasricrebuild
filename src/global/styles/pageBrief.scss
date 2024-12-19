@@ -38,3 +38,76 @@
     margin: 50px 0;
     height: 100vh;
 }
+
+@media(max-width : 1100px){
+
+   .pageBrief{
+    margin-top: 150px;
+   }
+
+}
+
+@media(max-width : 768px){
+
+    .pageBrief{
+     margin-top: 140px;
+
+     .headers{
+
+        align-items: center;
+        width: 90%;
+
+        p{
+            font-size: 30px;
+             line-height: 40px;
+        }
+     }
+    }
+ 
+ }
+
+ @media(max-width : 600px){
+
+    .pageBrief{
+     margin-top: 140px;
+
+     .headers{
+
+        align-items: center;
+        width: 100%;
+
+        p{
+            font-size: 30px;
+             line-height: 40px;
+        }
+
+        .description{
+            width: 100%;
+        }
+     }
+    }
+ 
+ }
+
+ @media(max-width : 500px){
+
+    .pageBrief{
+     margin-top: 130px;
+
+     .headers{
+
+        align-items: center;
+        width: 100%;
+
+        p{
+            font-size: 26px;
+             line-height: 34px;
+        }
+
+        .description{
+            width: 100%;
+        }
+     }
+    }
+ 
+ }
