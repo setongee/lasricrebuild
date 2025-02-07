@@ -8,18 +8,31 @@ import blog2 from '../../assets/blog/blog2.jpg'
 import blog3 from '../../assets/blog/blog3.jpg'
 import blog4 from '../../assets/blog/blog4.jpg'
 
+import { posts } from './blogData';
+import Blog1 from './blog1';
+import './blogTemp.scss'
+import Blog2 from './blog2';
+import Blog3 from './blog3';
+
 export default function BlogView() {
+
+    const [post, setPost] = useState({});
 
     const {id} = useParams();
     const navigate = useNavigate();
-
-    const [sub_data, setSub_data] = useState([])
     
     const navigateBack = () => {
 
         navigate(-1);
 
     }
+
+    useEffect(() => {
+       
+        const data = posts.filter( res => res.id === Number(id) );
+        if (data.length) setPost(data[0]);
+       
+    }, []);
 
 
   return (
@@ -40,7 +53,7 @@ export default function BlogView() {
                             
                             <div className="firstPart flex">
 
-                                Mon. 16th Dec. 2024
+                                {post.date}
 
                                 <p>-</p>
 
@@ -53,30 +66,16 @@ export default function BlogView() {
                         </div>
 
                         <div className="current_news_title">
-                            Unpacking Venture Economics: Insights into Startup Funding and Growth
+                            {post.title}
                         </div>    
 
                         <div className="current_news_image">
-                            <img src={blog1} alt="" />
-                        </div>                
-
-                        <div className="current_news_body" id='text'>
-
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, unde et. Quae suscipit tempore inventore alias nobis. Obcaecati asperiores rerum nisi commodi provident. Sint rerum beatae aspernatur eligendi maxime cumque, optio quod dolorum doloribus officiis. 
-                            
-                            {<br></br>}{<br></br>}
-
-                            Tempore earum necessitatibus quis similique. Maxime, neque in dolor voluptates error facilis suscipit culpa libero nesciunt natus sequi blanditiis, sapiente doloremque itaque numquam dolorum possimus, cupiditate mollitia inventore corporis dicta saepe fuga consequatur quibusdam? Atque pariatur in veritatis, ratione dolorem, ducimus facere ipsam fuga nisi reiciendis officiis, iste impedit perferendis sequi sed! Qui atque ad dolorem odio sed natus expedita, assumenda accusantium libero esse quod?
-
-                            {<br></br>}{<br></br>}
-
-                            Tempore earum necessitatibus quis similique. Maxime, neque in dolor voluptates error facilis suscipit culpa libero nesciunt natus sequi blanditiis, sapiente doloremque itaque numquam dolorum possimus, cupiditate mollitia inventore corporis dicta saepe fuga consequatur quibusdam? Atque pariatur in veritatis, ratione dolorem, ducimus facere ipsam fuga nisi reiciendis officiis.
-
-                            {<br></br>}{<br></br>}
-
-                            Tempore earum necessitatibus quis similique. Maxime, neque in dolord, cupiditate mollitia inventore corporis dicta saepe fuga consequatur quibusdam? Atque pariatur in veritatis, ratione dolorem, ducimus facere ipsam fuga nisi reiciendis officiis.
-                            
-                        </div>
+                            <img src={post.img} alt={post.title} />
+                        </div>  
+                        
+                        {
+                            Number(id) === 1 ? <Blog1/> : Number(id) === 2 ? <Blog2/> : Number(id) === 3 ? <Blog3/> : null
+                        }              
 
                     </div>
 
@@ -90,65 +89,23 @@ export default function BlogView() {
 
                     <div className="sub__news__data">
 
-                        <a className="subs_news" href="">
+                        {
+                            posts.length > 1 ? posts.filter( e => e.id !== Number(id) ).map( relatedPosts => (
 
-                            <div className="sub__image"><img src = {blog2} alt="" /></div>
-                            <div className="sub__title flex"> 
-                                The Role of LASRIC in Advancing Digital Transformation Across Sectors
-                                <div className="date">Mon. 13th Dec. 2024</div>
-                            </div>
+                                <a className="subs_news" href={`/blog/${relatedPosts.id}`}>
 
-                        </a>
+                                    <div className="sub__image"><img src = {relatedPosts.img} alt={relatedPosts.title} /></div>
+                                    <div className="sub__title flex"> 
 
-                        <a className="subs_news" href="">
+                                        {relatedPosts.title}
+                                        <div className="date"> {relatedPosts.date} </div>
 
-                            <div className="sub__image"><img src = {blog3} alt="" /></div>
-                            <div className="sub__title flex"> 
-                                The Role of LASRIC in Advancing Digital Transformation Across Sectors
-                                <div className="date">Mon. 13th Dec. 2024</div>
-                            </div>
+                                    </div>
 
-                        </a>
+                                </a>
 
-                        <a className="subs_news" href="">
-
-                            <div className="sub__image"><img src = {blog4} alt="" /></div>
-                            <div className="sub__title flex"> 
-                                The Role of LASRIC in Advancing Digital Transformation Across Sectors
-                                <div className="date">Mon. 13th Dec. 2024</div>
-                            </div>
-
-                        </a>
-
-                        <a className="subs_news" href="">
-
-                            <div className="sub__image"><img src = {blog1} alt="" /></div>
-                            <div className="sub__title flex"> 
-                                The Role of LASRIC in Advancing Digital Transformation Across Sectors
-                                <div className="date">Mon. 13th Dec. 2024</div>
-                            </div>
-
-                        </a>
-
-                        <a className="subs_news" href="">
-
-                            <div className="sub__image"><img src = {blog3} alt="" /></div>
-                            <div className="sub__title flex"> 
-                                The Role of LASRIC in Advancing Digital Transformation Across Sectors
-                                <div className="date">Mon. 13th Dec. 2024</div>
-                            </div>
-
-                        </a>
-
-                        <a className="subs_news" href="">
-
-                            <div className="sub__image"><img src = {blog4} alt="" /></div>
-                            <div className="sub__title flex"> 
-                                The Role of LASRIC in Advancing Digital Transformation Across Sectors
-                                <div className="date">Mon. 13th Dec. 2024</div>
-                            </div>
-
-                        </a>
+                            ) ) : null
+                        }
 
                     </div>
 

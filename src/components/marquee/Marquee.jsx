@@ -5,7 +5,7 @@ import './marquee.scss'
 import thinkbikes from '../../assets/marquee/think.png'
 import moon from '../../assets/marquee/moon.png'
 import lanadek from '../../assets/marquee/lonadek.png'
-import shifa from '../../assets/marquee/shifa.png'
+import shifa from '../../assets/marquee/Yusufbilesanmi.png'
 import farmz2u from '../../assets/marquee/farmz2u.png'
 import pricepally from '../../assets/marquee/pricepally.png'
 import adire from '../../assets/marquee/adire.png'
@@ -19,11 +19,11 @@ export default function Marquee() {
 
         <div className="marquee__card delay1">
 
-            <div className="m__image"> <img src={thinkbikes} alt="James Akobona - CEO ThinkBikes" /> </div>
+            <div className="m__image"> <img src={thinkbikes} alt="Tolulope Olukokun - CEO ThinkBikes" /> </div>
             
             <div className="card__text ">
 
-                <p> James Akobona </p>
+                <p> Tolulope Olukokun </p>
                 <span> CEO, ThinkBikes </span>
 
             </div>

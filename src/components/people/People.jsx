@@ -61,6 +61,12 @@ export default function People({size}) {
 
                             <p>{e?.firstname} {e?.lastname}</p>
                             <span> {e?.job} </span>
+                            
+                            <div className="post" style={{fontWeight : 600}}>
+                                {
+                                    `${e?.firstname} ${e?.lastname}` === "Prof. Olumuyiwa Odusanya " ? <span> Chairman, LASRIC </span> : `${e?.firstname} ${e?.lastname}` === "Engr (Mrs) Ibilola  Kasunmu" ? <span> Secretary, LASRIC </span> : <span> Member, LASRIC </span>
+                                }
+                            </div>
 
                         </div>
 

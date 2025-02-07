@@ -7,9 +7,9 @@
     
 }
 
-// .marquee:hover .marquee__card{
-//     // animation-play-state: paused
-// }
+.marquee:hover .marquee__card{
+    animation-play-state: paused
+}
 
 
 @keyframes scrollLeft{

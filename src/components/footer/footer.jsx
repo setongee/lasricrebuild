@@ -44,18 +44,19 @@ const Footer = () => {
                         <div className="links-footer">
 
                             <Link to = '/about'> About Us </Link>
-                            <Link to = '/people'> Portfolio </Link>
-                            <Link to='/apply'> Blog </Link>
-                            <Link to = '/login'> Support </Link>
+                            <Link to = '/portfolio'> Portfolio </Link>
+                            <Link to='/blog'> Blog </Link>
+                            <Link to = '/support/help'> How to Apply </Link>
                             <Link to = '/register' className='active__footer' > Register </Link>
 
                         </div>
 
                         <div className="links-footer social">
 
-                            <Link to = '/about'> <i className="fi fi-brands-linkedin"></i> </Link>
-                            <Link to = '/people'> <i className="fi fi-brands-facebook"></i> </Link>
-                            <Link to='/apply'> <i className="fi fi-brands-twitter-alt-circle"></i> </Link>
+                            <a target='_blank' href = 'https://www.linkedin.com/in/lasric-lagos-7558221a4/?originalSubdomain=ng'> <i className="fi fi-brands-linkedin"></i> </a>
+                            <a href='https://web.facebook.com/p/Lasric-Lagos-100088673120709/?_rdc=1&_rdr#' target='_blank' > <i className="fi fi-brands-facebook"></i> </a>
+                            <a href='https://x.com/lasriclagos?lang=en' target='_blank' > <i className="fi fi-brands-twitter-alt-circle"></i> </a>
+                            <a href='https://www.instagram.com/lasriclagos/?hl=en' target='_blank' > <i className="fi fi-brands-instagram"></i> </a>
 
                         </div>
 

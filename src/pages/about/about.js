@@ -123,7 +123,7 @@ const About = () => {
 
                             <div className="h1">Our Mission</div>
                             <div className="divider"></div>
-                            <p>Driving wealth, growth, and solving societal challenges in Lagos through Science, Technology, and innovation-driven solutions</p>
+                            <p>Creating wealth, growth and tackling societal challenges in Lagos State through the application of Science and Technology in a knowledge driven world</p>
 
                         </div>
                         

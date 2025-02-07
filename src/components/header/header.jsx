@@ -77,11 +77,11 @@ return (
 
                 <div className="header__items">
 
-                    <div className="logo"> 
+                    <Link to = {routes.home} className="logo"> 
                 
                         <img src={LasricLogo} alt="lasric logo" />
                     
-                    </div>
+                    </Link>
 
                     <div className="menulist">
 

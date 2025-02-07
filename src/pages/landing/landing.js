@@ -89,17 +89,17 @@ const Landing = () => {
                     <div className="cards__group">
 
                         <div className="card">
-                            <p>189+</p>
+                            <p>94</p>
                             <span> Total Number of  Funded Individuals </span>
                         </div>
 
                         <div className="card">
-                            <p> N250m+ </p>
+                            <p> N344m+ </p>
                             <span> Total amount funded so far combined </span>
                         </div>
 
                         <div className="card">
-                            <p> N4.76m+ </p>
+                            <p> N3.65m+ </p>
                             <span> Average amount  funded per company / idea </span>
                         </div>
 
@@ -119,7 +119,7 @@ const Landing = () => {
 
                    <div className="offers">
 
-                        <Offers photo = {venture} title = "Venture Capital Funding" subtitle = "Empowering Lagos State startups and entrepreneurs with strategic venture capital funding to drive innovation, create jobs, and boost economic growth." />
+                        <Offers photo = {venture} title = "Venture Capital Funding" subtitle = "The LASRIC Venture Catalyst Project (VCP) is a strategic funding intervention between LASRIC and Impact Hub Lagos that aims to pivot away from traditional grant funding towards a catalyst approach." />
                         
                         <Offers photo = {evaluation} title = "Investment Potential Evaluation" subtitle = "Providing a source of funding for companies or startups that have a high growth and social impact potential. LASRIC will invest in a no-equity interest." />
 
@@ -154,7 +154,7 @@ const Landing = () => {
 
                 <Container>
                 
-                    <SectionHeading title = "Work with the best specialists who have the functional experience, industry knowledge and technicals expertise your project needs" subtitle = "" subtag = "Our People" style = "light extendTitle" showNavArrows = {true} link = { {status : true, url : "/people"} } target = "arrowNavScroll" />
+                    <SectionHeading title = "Work with the best specialists who have the functional experience, industry knowledge and technical expertise your project needs" subtitle = "" subtag = "Our People" style = "light extendTitle" showNavArrows = {true} link = { {status : true, url : "/people"} } target = "arrowNavScroll" />
 
 
                     {/* people 6 */}
@@ -180,7 +180,7 @@ const Landing = () => {
                             
                             <div className="quotes"><img src={mark} alt="marks" /></div>
 
-                            <div className="comment">LASRIC believes in growing modern startups to scale, pricepally benefits from this belief...</div>
+                            <div className="comment">LASRIC funding provided crucial support, fostering innovation and growth with seamless access to resources and opportunities.</div>
 
                             <div className="author">
 
@@ -189,8 +189,27 @@ const Landing = () => {
                                     <span>CEO, Pricepally</span>
                                 </div>
 
+                                <div className="author__photo"> LL </div>
+
+                            </div>
+
+                        </div>
+
+                        <div className="review__card">
+                            
+                            <div className="quotes"><img src={mark} alt="marks" /></div>
+
+                            <div className="comment">Smooth process, great support! LASRIC funding accelerated our innovation with seamless execution and transparency.</div>
+
+                            <div className="author">
+
+                                <div className="author__name">
+                                    <p> George Kobani </p>
+                                    <span>CEO, Doci Healthcare</span>
+                                </div>
+
                                 <div className="author__photo">
-                                    <img src={luther} alt="" />
+                                    GK
                                 </div>
 
                             </div>
@@ -201,17 +220,17 @@ const Landing = () => {
                             
                             <div className="quotes"><img src={mark} alt="marks" /></div>
 
-                            <div className="comment">LASRIC believes in growing modern startups to scale, pricepally benefits from this belief...</div>
+                            <div className="comment">A game-changer! LASRIC empowered our startup with essential resources for groundbreaking digital solutions.</div>
 
                             <div className="author">
 
                                 <div className="author__name">
-                                    <p>Luther Lawoyin</p>
-                                    <span>CEO, Pricepally</span>
+                                    <p> Micheal Osumune </p>
+                                    <span>CEO, Moon Innivations</span>
                                 </div>
 
                                 <div className="author__photo">
-                                    <img src={luther} alt="" />
+                                    MO
                                 </div>
 
                             </div>
@@ -222,17 +241,17 @@ const Landing = () => {
                             
                             <div className="quotes"><img src={mark} alt="marks" /></div>
 
-                            <div className="comment">LASRIC believes in growing modern startups to scale, pricepally benefits from this belief...</div>
+                            <div className="comment">Timely funding and excellent guidance—LASRIC truly empowers businesses to innovate and scale.</div>
 
                             <div className="author">
 
                                 <div className="author__name">
-                                    <p>Luther Lawoyin</p>
-                                    <span>CEO, Pricepally</span>
+                                    <p>Cynthia Asije</p>
+                                    <span>CEO, Adire Lounge</span>
                                 </div>
 
                                 <div className="author__photo">
-                                    <img src={luther} alt="" />
+                                    CA
                                 </div>
 
                             </div>
@@ -243,38 +262,17 @@ const Landing = () => {
                             
                             <div className="quotes"><img src={mark} alt="marks" /></div>
 
-                            <div className="comment">LASRIC believes in growing modern startups to scale, pricepally benefits from this belief...</div>
+                            <div className="comment">Excellent support from LASRIC—funding accelerated our project, driving impactful innovation and business growth.</div>
 
                             <div className="author">
 
                                 <div className="author__name">
-                                    <p>Luther Lawoyin</p>
-                                    <span>CEO, Pricepally</span>
+                                    <p>Kafayat Fakoya</p>
+                                    <span>Lagos State University</span>
                                 </div>
 
                                 <div className="author__photo">
-                                    <img src={luther} alt="" />
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div className="review__card">
-                            
-                            <div className="quotes"><img src={mark} alt="marks" /></div>
-
-                            <div className="comment">LASRIC believes in growing modern startups to scale, pricepally benefits from this belief...</div>
-
-                            <div className="author">
-
-                                <div className="author__name">
-                                    <p>Luther Lawoyin</p>
-                                    <span>CEO, Pricepally</span>
-                                </div>
-
-                                <div className="author__photo">
-                                    <img src={luther} alt="" />
+                                    KF
                                 </div>
 
                             </div>
@@ -285,13 +283,9 @@ const Landing = () => {
 
                 </Container>
 
-
             </div>
             
-            
-
         </div>
-
 
     );
 }
